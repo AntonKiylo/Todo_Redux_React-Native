@@ -24,6 +24,7 @@ const InputTodo = () => {
         onChangeText={text => setInputText(text)}
         style={styles.input}
         placeholder='Add Item'
+        placeholderTextColor='#ccc'
       />
       <TouchableOpacity onPress={onHandlePress}>
         <Image source={AddButtonImage} />
@@ -37,13 +38,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 12,
-    backgroundColor: '#f1faee',
+    backgroundColor: '#282851',
     padding: 8
   },
   input: {
     flex: 1,
     paddingRight: 10,
-    fontSize: 18
+    fontSize: 18,
+    color: '#fff'
   }
 });
 

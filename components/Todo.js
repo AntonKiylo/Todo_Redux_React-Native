@@ -22,8 +22,11 @@ const Todo = ({ todo }) => {
         <CheckBox
           value={todo.isComplited}
           onValueChange={onHandleChange}
+          tintColors={{true: '#3d79b1', false: '#ccc'}}
         />
-        <Text style={todo.isComplited ? styles.complitedTodo : styles.notComplitedTodo}>{todo.todo}</Text>
+        <Text style={todo.isComplited ? styles.complitedTodo : styles.notComplitedTodo}>
+          {todo.todo}
+        </Text>
       </View>
       <TouchableOpacity onPress={onHandlePress}>
         <Image source={RemoveButtonImage} />
@@ -37,11 +40,12 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     padding: 10,
     borderRadius: 12,
-    borderColor: '#ccc',
+    borderColor: '#494d79',
     borderWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#44446b'
   },
   textWrapper: {
     flexDirection: 'row',
@@ -50,14 +54,14 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   complitedTodo: {
-    color: 'grey',
+    color: '#ccc',
     textDecorationLine: 'line-through',
     fontSize: 18,
     flexWrap: 'wrap',
     flex: 1
   },
   notComplitedTodo: {
-    color: 'black',
+    color: '#fff',
     fontSize: 18,
     flexWrap: 'wrap',
     flex: 1

@@ -9,7 +9,7 @@ const TodoContainer = () => {
   if (!todos || !todos.length) {
     return (
       <View style={styles.emptyContainer}>
-        <Text>NO TODOS</Text>
+        <Text style={styles.emptyContainerText}>NO TODOS</Text>
       </View>
     );
   }
@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
     flex: 5,
     justifyContent:'center',
     alignItems: 'center'
+  },
+  emptyContainerText: {
+    color: '#ccc',
+    fontSize: 24
   }
 });
 

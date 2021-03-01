@@ -18,12 +18,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     paddingBottom: 16,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#494d79',
     borderBottomWidth: 1
   },
   title: {
     alignSelf: 'flex-end',
-    backgroundColor: 'white'
+    color: '#ccc',
+    fontSize: 18
   },
 });
 
