@@ -5,7 +5,7 @@ let todoId = 0;
 export const addTodo = inputText => ({
   type: ACTIONS.ADD_TODO,
   payload: {
-    todo: inputText,
+    content: inputText,
     id: (++todoId).toString(),
     isComplited: false
   }

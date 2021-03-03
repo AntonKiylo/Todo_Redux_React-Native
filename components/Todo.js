@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
@@ -8,27 +8,27 @@ import RemoveButtonImage from '../assets/remove-button.png';
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
 
-  const onHandlePress = () => {
+  const onHandleRemoveTodo = useCallback(() => {
     dispatch(removeTodo(todo.id));
-  }
+  }, []);
 
-  const onHandleChange = () => {
+  const onHandleToggleTodoState = useCallback(() => {
     dispatch(toggleState(todo.id));
-  }
+  }, []);
 
   return (
     <View style={styles.todo}>
       <View style={styles.textWrapper}>
         <CheckBox
           value={todo.isComplited}
-          onValueChange={onHandleChange}
+          onValueChange={onHandleToggleTodoState}
           tintColors={{true: '#3d79b1', false: '#ccc'}}
         />
-        <Text style={todo.isComplited ? styles.complitedTodo : styles.notComplitedTodo}>
-          {todo.todo}
+        <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
+          {todo.content}
         </Text>
       </View>
-      <TouchableOpacity onPress={onHandlePress}>
+      <TouchableOpacity onPress={onHandleRemoveTodo}>
         <Image source={RemoveButtonImage} />
       </TouchableOpacity>
     </View>
@@ -53,19 +53,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingRight: 10
   },
-  complitedTodo: {
-    color: '#ccc',
-    textDecorationLine: 'line-through',
-    fontSize: 18,
-    flexWrap: 'wrap',
-    flex: 1
-  },
   notComplitedTodo: {
     color: '#fff',
     fontSize: 18,
     flexWrap: 'wrap',
     flex: 1
-  }
+  },
+  complitedTodo: {
+    color: '#ccc',
+    textDecorationLine: 'line-through',
+  },
 });
 
 export default Todo;

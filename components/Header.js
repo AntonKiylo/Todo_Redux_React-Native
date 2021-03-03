@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, TextInput, Image, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import InputTodo from './InputTodo';
 
 const Header = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>Todo App</Text>
       <InputTodo />
     </View>
   );
@@ -13,11 +12,8 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'space-between',
-    padding: 10,
-    paddingBottom: 16,
+    padding: 12,
+    paddingTop: 50,
     borderBottomColor: '#494d79',
     borderBottomWidth: 1
   },

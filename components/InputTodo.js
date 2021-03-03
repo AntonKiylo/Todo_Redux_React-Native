@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './redux/actions';
@@ -8,14 +8,10 @@ const InputTodo = () => {
   const [inputText, setInputText] = useState('');
   const dispatch = useDispatch();
 
-  const onHandlePress = () => {
-    if (inputText.trim()) {
-      dispatch(addTodo(inputText));
-      setInputText('');
-    } else {
-      return;
-    }
-  }
+  const onHandleAddTodo = useCallback(() => {  // ??
+    dispatch(addTodo(inputText));
+    setInputText('');
+  }, [inputText]);
 
   return (
     <View style={styles.inputBlock}>
@@ -26,7 +22,7 @@ const InputTodo = () => {
         placeholder='Add Item'
         placeholderTextColor='#ccc'
       />
-      <TouchableOpacity onPress={onHandlePress}>
+      <TouchableOpacity onPress={onHandleAddTodo} disabled={!inputText.trim()}>
         <Image source={AddButtonImage} />
       </TouchableOpacity>
     </View>

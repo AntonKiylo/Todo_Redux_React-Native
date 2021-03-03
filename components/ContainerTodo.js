@@ -3,6 +3,9 @@ import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import Todo from './Todo';
 
+const renderItem = ({ item }) => <Todo todo={item} />;
+const key = item => item.id;
+
 const TodoContainer = () => {
   const todos = useSelector(state => state);
 
@@ -15,24 +18,21 @@ const TodoContainer = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={todos}
-        renderItem={({ item }) => <Todo todo={item} />}
-        keyExtractor={item => item.id}
-      />
-    </View>
+    <FlatList
+      style={styles.todoContainer}
+      data={todos}
+      renderItem={renderItem}
+      keyExtractor={key}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 5,
-    alignSelf: 'stretch',
-    padding: 12
+  todoContainer: {
+    padding: 12,
   },
   emptyContainer: {
-    flex: 5,
+    flex: 1,
     justifyContent:'center',
     alignItems: 'center'
   },
