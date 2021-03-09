@@ -8,7 +8,7 @@ const InputTodo = () => {
   const [inputText, setInputText] = useState('');
   const dispatch = useDispatch();
 
-  const onHandleAddTodo = useCallback(() => {  // ??
+  const onHandleAddTodo = useCallback(() => {
     dispatch(addTodo(inputText));
     setInputText('');
   }, [inputText]);

@@ -16,7 +16,7 @@ export const removeTodo = id => ({
   payload: id
 });
 
-export const toggleState = id => ({
-  type: ACTIONS.TOGGLE_STATE,
+export const toggleTodoStatus = id => ({
+  type: ACTIONS.TOGGLE_TODO_STATUS,
   payload: id
 });

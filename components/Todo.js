@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
-import { removeTodo, toggleState } from './redux/actions';
+import { removeTodo, toggleTodoStatus } from './redux/actions';
 import RemoveButtonImage from '../assets/remove-button.png';
 
 const Todo = ({ todo }) => {
@@ -13,7 +13,7 @@ const Todo = ({ todo }) => {
   }, []);
 
   const onHandleToggleTodoState = useCallback(() => {
-    dispatch(toggleState(todo.id));
+    dispatch(toggleTodoStatus(todo.id));
   }, []);
 
   return (
