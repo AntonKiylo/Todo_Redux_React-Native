@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
@@ -45,19 +45,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#44446b'
+    backgroundColor: '#44446b',
   },
   textWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    paddingRight: 10
+    paddingRight: 10,
   },
   notComplitedTodo: {
     color: '#fff',
     fontSize: 18,
     flexWrap: 'wrap',
-    flex: 1
+    flex: 1,
   },
   complitedTodo: {
     color: '#ccc',

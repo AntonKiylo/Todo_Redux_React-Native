@@ -9,10 +9,10 @@ const reducer = (state = initialState, action) => {
     case ACTIONS.REMOVE_TODO:
       return state.filter(item => item.id !== action.payload);
     case ACTIONS.TOGGLE_TODO_STATUS:
-      return state.map(item => (item.id === action.payload) ? {...item, isComplited: !item.isComplited} : item);
+      return state.map(item => (item.id === action.payload ? {...item, isComplited: !item.isComplited} : item));
     default:
       return state;
   }
-}
+};
 
 export default reducer;

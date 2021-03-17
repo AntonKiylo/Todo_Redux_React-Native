@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import Todo from './Todo';
 
 const renderItem = ({ item }) => <Todo todo={item} />;
-const key = item => item.id;
+const key = (item) => item.id;
 
 const TodoContainer = () => {
-  const todos = useSelector(state => state);
+  const todos = useSelector((state) => state);
 
   if (!todos || !todos.length) {
     return (
@@ -25,7 +25,7 @@ const TodoContainer = () => {
       keyExtractor={key}
     />
   );
-}
+};
 
 const styles = StyleSheet.create({
   todoContainer: {
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
   },
   emptyContainer: {
     flex: 1,
-    justifyContent:'center',
-    alignItems: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   emptyContainerText: {
     color: '#ccc',
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 });
 
 export default TodoContainer;

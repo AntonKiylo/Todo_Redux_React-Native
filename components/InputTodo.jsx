@@ -17,17 +17,17 @@ const InputTodo = () => {
     <View style={styles.inputBlock}>
       <TextInput
         value={inputText}
-        onChangeText={text => setInputText(text)}
+        onChangeText={(text) => setInputText(text)}
         style={styles.input}
-        placeholder='Add Item'
-        placeholderTextColor='#ccc'
+        placeholder="Add Item"
+        placeholderTextColor="#ccc"
       />
       <TouchableOpacity onPress={onHandleAddTodo} disabled={!inputText.trim()}>
         <Image source={AddButtonImage} />
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   inputBlock: {
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 12,
     backgroundColor: '#282851',
-    padding: 8
+    padding: 8,
   },
   input: {
     flex: 1,
     paddingRight: 10,
     fontSize: 18,
-    color: '#fff'
-  }
+    color: '#fff',
+  },
 });
 
 export default InputTodo;
