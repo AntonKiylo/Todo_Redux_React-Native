@@ -1,49 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from "react";
+import { StyleSheet, View, TextInput, TouchableOpacity, Text } from "react-native";
+import { useDispatch } from "react-redux";
+import { setUserData } from "./redux/actions";
 
 const AuthenticationScreen = () => {
   const [usernameText, setUsernameText] = useState('');
   const [passwordText, setPasswordText] = useState('');
-  const [login, setLogin] = useState(null);
+  const dispatch = useDispatch();
 
-  const onHandleLogin = () => {
-    setLogin({name: usernameText, password: passwordText})
-  }
-
-  useEffect(() => {
-    const storeData = async (value) => {
-      try {
-        const jsonValue = JSON.stringify(value)
-        await AsyncStorage.setItem('@storage_Key', jsonValue)
-      } catch (e) {
-        console.log(e);
-      }
-    }
-
-    storeData(login);
-  }, [setLogin]);
+  const onHandlerLogin = () => {
+    dispatch(setUserData({ userName: usernameText, password: passwordText }));
+  };
 
   return (
     <View style={styles.form}>
       <TextInput
         style={styles.input}
         value={usernameText}
-        onChangeText={(text) => setUsernameText(text)}
+        onChangeText={text => setUsernameText(text)}
         placeholder="Username"
         placeholderTextColor="#ccc"
       />
       <TextInput
         style={styles.input}
         value={passwordText}
-        onChangeText={(text) => setPasswordText(text)}
+        onChangeText={text => setPasswordText(text)}
         placeholder="Password"
         placeholderTextColor="#ccc"
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={onHandleLogin}
         disabled={!(usernameText.trim() && passwordText.trim())}
+        onPress={onHandlerLogin}
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
@@ -78,7 +66,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     color: '#ccc',
-  },
+  }
 });
 
 export default AuthenticationScreen;

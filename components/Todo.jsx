@@ -1,20 +1,20 @@
-import React, { useCallback } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
-import { useDispatch } from 'react-redux';
-import CheckBox from '@react-native-community/checkbox';
-import { removeTodo, toggleTodoStatus } from './redux/actions';
-import RemoveButtonImage from '../assets/remove-button.png';
+import React, { useCallback } from "react";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import { useDispatch } from "react-redux";
+import CheckBox from "@react-native-community/checkbox";
+import { removeTodo, toggleTodoStatus } from "./redux/actions";
+import RemoveButtonImage from "../assets/remove-button.png";
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
 
   const onHandleRemoveTodo = useCallback(() => {
     dispatch(removeTodo(todo.id));
-  }, []);
+  }, [todo.id]);
 
   const onHandleToggleTodoState = useCallback(() => {
     dispatch(toggleTodoStatus(todo.id));
-  }, []);
+  }, [todo.id]);
 
   return (
     <View style={styles.todo}>

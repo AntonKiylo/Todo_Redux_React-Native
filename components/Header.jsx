@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import InputTodo from './InputTodo';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import InputTodo from "./InputTodo";
 
-const Header = () => (
+const Header = ({ navigation }) => (
   <View style={styles.header}>
-    <InputTodo />
+    <InputTodo navigation={navigation} />
   </View>
 );
 
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     color: '#ccc',
     fontSize: 18,
-  },
+  }
 });
 
 export default Header;

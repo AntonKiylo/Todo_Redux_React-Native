@@ -1,20 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Header from './Header';
-import ContainerTodo from './ContainerTodo';
+import React from "react";
+import Home from "./Home";
+import DrawerContent from "./DrawerContent";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
+const Drawer = createDrawerNavigator();
 
 const HomeScreen = () => (
-  <View style={styles.container}>
-    <Header />
-    <ContainerTodo />
-  </View>
+  <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+    <Drawer.Screen name='Home' component={Home} />
+  </Drawer.Navigator>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#31315b',
-  },
-});
 
 export default HomeScreen;

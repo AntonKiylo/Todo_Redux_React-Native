@@ -1,13 +1,13 @@
-import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
-import { useSelector } from 'react-redux';
-import Todo from './Todo';
+import React from "react";
+import { StyleSheet, View, FlatList, Text } from "react-native";
+import { useSelector } from "react-redux";
+import Todo from "./Todo";
 
 const renderItem = ({ item }) => <Todo todo={item} />;
 const key = (item) => item.id;
 
 const TodoContainer = () => {
-  const todos = useSelector((state) => state);
+  const todos = useSelector(state => state.todoReducer);
 
   if (!todos || !todos.length) {
     return (
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   emptyContainerText: {
     color: '#ccc',
     fontSize: 24,
-  },
+  }
 });
 
 export default TodoContainer;

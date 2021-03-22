@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Image } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { addTodo } from './redux/actions';
-import AddButtonImage from '../assets/add-button.png';
+import React, { useState, useCallback } from "react";
+import { StyleSheet, View, TextInput, TouchableOpacity, Image } from "react-native";
+import { useDispatch } from "react-redux";
+import { addTodo } from "./redux/actions";
+import AddButtonImage from "../assets/add-button.png";
+import BurgerImage from "../assets/burger.png";
 
-const InputTodo = () => {
+const InputTodo = ({ navigation }) => {
   const [inputText, setInputText] = useState('');
   const dispatch = useDispatch();
 
@@ -15,6 +16,12 @@ const InputTodo = () => {
 
   return (
     <View style={styles.inputBlock}>
+      <TouchableOpacity
+        style={styles.drawerButton}
+        onPress={() => navigation.openDrawer()}
+      >
+        <Image source={BurgerImage} />
+      </TouchableOpacity>
       <TextInput
         value={inputText}
         onChangeText={(text) => setInputText(text)}
@@ -43,6 +50,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
   },
+  drawerButton: {
+    marginRight: 10,
+  }
 });
 
 export default InputTodo;
