@@ -1,72 +1,34 @@
-import React, { useState } from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity, Text } from "react-native";
-import { useDispatch } from "react-redux";
-import { setUserData } from "./redux/actions";
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import LogIn from "./LogIn";
+import CreacteAccaunt from "./CreacteAccaunt";
+
+const ScreensStack = createStackNavigator();
 
 const AuthenticationScreen = () => {
-  const [usernameText, setUsernameText] = useState('');
-  const [passwordText, setPasswordText] = useState('');
-  const dispatch = useDispatch();
-
-  const onHandlerLogin = () => {
-    dispatch(setUserData({ userName: usernameText, password: passwordText }));
-  };
-
   return (
-    <View style={styles.form}>
-      <TextInput
-        style={styles.input}
-        value={usernameText}
-        onChangeText={text => setUsernameText(text)}
-        placeholder="Username"
-        placeholderTextColor="#ccc"
+    <ScreensStack.Navigator>
+      <ScreensStack.Screen
+        name="LogIn"
+        component={LogIn}
+        options={{
+          title: "Log into your account here",
+          headerStyle: {backgroundColor: "#31315b"},
+          headerTintColor: "#ccc",
+          headerTitleAlign: "center"
+        }}
       />
-      <TextInput
-        style={styles.input}
-        value={passwordText}
-        onChangeText={text => setPasswordText(text)}
-        placeholder="Password"
-        placeholderTextColor="#ccc"
+      <ScreensStack.Screen
+        name="CreacteAccaunt"
+        component={CreacteAccaunt}
+        options={{
+          title: "Log In",
+          headerStyle: {backgroundColor: "#31315b"},
+          headerTintColor: "#ccc",
+        }}
       />
-      <TouchableOpacity
-        style={styles.button}
-        disabled={!(usernameText.trim() && passwordText.trim())}
-        onPress={onHandlerLogin}
-      >
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-    </View>
+    </ScreensStack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#31315b',
-  },
-  input: {
-    alignSelf: 'stretch',
-    marginBottom: 20,
-    fontSize: 18,
-    borderRadius: 12,
-    padding: 8,
-    backgroundColor: '#282851',
-    color: '#fff',
-  },
-  button: {
-    borderRadius: 12,
-    backgroundColor: '#3d79b1',
-    padding: 8,
-    width: 100,
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#ccc',
-  }
-});
 
 export default AuthenticationScreen;
