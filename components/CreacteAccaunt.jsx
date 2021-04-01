@@ -1,48 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { setUserData } from "./redux/actions";
 
 const CreacteAccaunt = ({ navigation }) => {
-  const [usernameText, setUsernameText] = useState('');
-  const [passwordText, setPasswordText] = useState('');
-
   const dispatch = useDispatch();
 
-  const onHandlerCreate = () => {
-    dispatch(setUserData({ userName: usernameText, password: passwordText }));
-  };
+  // const onHandlerCreate = () => {
+  //   dispatch(setUserData({ userName: usernameText, password: passwordText }));
+  // };
 
   return (
-    <View style={styles.form}>
-      <TextInput
-        style={styles.input}
-        value={usernameText}
-        onChangeText={text => setUsernameText(text)}
-        placeholder="Username"
-        placeholderTextColor="#ccc"
-      />
-      <TextInput
-        style={styles.input}
-        value={passwordText}
-        onChangeText={text => setPasswordText(text)}
-        placeholder="Password"
-        placeholderTextColor="#ccc"
-      />
-      <TouchableOpacity
-        style={styles.createButton}
-        disabled={!(usernameText.trim() && passwordText.trim())}
-        onPress={onHandlerCreate}
-      >
-        <Text style={styles.createButtonText}>Create New Accaunt</Text>
-      </TouchableOpacity>
+    <Formik
+      initialValues={({ userName: "" }, { password: "" })}
+      onSubmit={(values) => dispatch(setUserData({ userName: values.userName, password: values.password }))}
+    >
+      {({ handleChange, values, handleSubmit }) => (
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            value={values.userName}
+            onChangeText={handleChange("userName")}
+            placeholder="Username"
+            placeholderTextColor="#ccc"
+          />
+          <TextInput
+            style={styles.input}
+            value={values.password}
+            onChangeText={handleChange("password")}
+            placeholder="Password"
+            placeholderTextColor="#ccc"
+          />
+          <TouchableOpacity
+            style={styles.createButton}
+            //disabled={!(usernameText.trim() && passwordText.trim())}
+            onPress={handleSubmit}
+          >
+            <Text style={styles.createButtonText}>Create New Accaunt</Text>
+          </TouchableOpacity>
 
-      <View>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.footerText}>Already have accaunt?</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={styles.footerText}>Already have accaunt?</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
+    </Formik>
   );
 };
 

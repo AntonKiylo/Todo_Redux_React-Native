@@ -24,7 +24,10 @@ const Main = () => {
         {authenticationState.isLoading ? (
           <ScreensStack.Screen name="Loader" component={Loader} />
         ) : authenticationState.userToken === null ? (
-          <ScreensStack.Screen name="AuthenticationScreen" component={AuthenticationScreen} />
+          <ScreensStack.Screen
+            name="AuthenticationScreen"
+            component={AuthenticationScreen}
+          />
         ) : (
           <ScreensStack.Screen name="HomeScreen" component={HomeScreen} />
         )}
