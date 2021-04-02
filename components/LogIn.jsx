@@ -7,42 +7,63 @@ import {
   View,
 } from "react-native";
 import { Formik } from "formik";
+import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { setUserData } from "./redux/actions";
+
+const CreateSchema = Yup.object().shape({
+  userName: Yup.string()
+    .min(2, "To short!")
+    .max(50, "To long!")
+    .required("Required"),
+  password: Yup.string()
+    .min(2, "To short!")
+    .max(50, "To long!")
+    .required("Required"),
+});
 
 const LogIn = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  // const onHandlerLogin = () => {
-  //   dispatch(setUserData({ userName: usernameText, password: passwordText }));
-  // };
-
   return (
     <Formik
-      initialValues={({ userName: "" }, { password: "" })}
-      onSubmit={values => dispatch(setUserData({ userName: values.userName, password: values.password }))}
+      initialValues={{ userName: "", password: "" }}
+      validationSchema={CreateSchema}
+      onSubmit={(values) =>
+        dispatch(
+          setUserData({ userName: values.userName, password: values.password })
+        )
+      }
     >
-      {({ handleChange, values, handleSubmit }) => (
+      {(props) => (
         <View style={styles.form}>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.input}
+              value={props.values.userName}
+              onChangeText={props.handleChange("userName")}
+              placeholder="Username"
+              placeholderTextColor="#ccc"
+            />
+            {props.errors.userName && props.touched.userName && (
+              <Text style={styles.errorText}>{props.errors.userName}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputWrapper}>
           <TextInput
             style={styles.input}
-            value={values.userName}
-            onChangeText={handleChange("userName")}
-            placeholder="Username"
-            placeholderTextColor="#ccc"
-          />
-          <TextInput
-            style={styles.input}
-            value={values.password}
-            onChangeText={handleChange("password")}
+            value={props.values.password}
+            onChangeText={props.handleChange("password")}
             placeholder="Password"
             placeholderTextColor="#ccc"
           />
-          <TouchableOpacity
-            style={styles.button}
-            //disabled={!(values.userName.trim() && values.password.trim())}
-            onPress={handleSubmit}
-          >
+          {props.errors.password && props.touched.password && (
+            <Text style={styles.errorText}>{props.errors.password}</Text>
+          )}
+          </View>
+
+          <TouchableOpacity style={styles.button} onPress={props.handleSubmit}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
 
@@ -68,9 +89,11 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#31315b",
   },
-  input: {
+  inputWrapper: {
     alignSelf: "stretch",
     marginBottom: 20,
+  },
+  input: {
     fontSize: 18,
     borderRadius: 12,
     padding: 8,
@@ -104,6 +127,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
   },
+  errorText: {
+    color: "red",
+    textAlign: "center"
+  }
 });
 
 export default LogIn;
