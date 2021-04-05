@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import { useDispatch } from "react-redux";
-//import CheckBox from "@react-native-community/checkbox";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { removeTodo, toggleTodoStatus } from "./redux/actions";
 import RemoveButtonImage from "../assets/remove-button.png";
 
@@ -19,11 +19,12 @@ const Todo = ({ todo }) => {
   return (
     <View style={styles.todo}>
       <View style={styles.textWrapper}>
-        {/* <CheckBox
-          value={todo.isComplited}
-          onValueChange={onHandleToggleTodoState}
-          tintColors={{true: '#3d79b1', false: '#ccc'}}
-        /> */}
+        <BouncyCheckbox
+          size={23}
+          iconStyle={{ borderColor: "#ccc" }}
+          fillColor="#3d79b1"
+          onPress={onHandleToggleTodoState}
+        />
         <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
           {todo.content}
         </Text>

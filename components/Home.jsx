@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, StatusBar } from "react-native";
 import Header from "./Header";
 import ContainerTodo from "./ContainerTodo";
 
 const Home = ({ navigation }) => (
   <View style={styles.home}>
+    <StatusBar barStyle="light-content" />
     <Header navigation={navigation} />
     <ContainerTodo />
   </View>

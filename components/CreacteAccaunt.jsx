@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { TextInput, Text, TouchableOpacity, StyleSheet, View, StatusBar } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
@@ -31,6 +31,7 @@ const CreacteAccaunt = ({ navigation }) => {
     >
       {(props) => (
         <View style={styles.form}>
+          <StatusBar barStyle="light-content" />
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}

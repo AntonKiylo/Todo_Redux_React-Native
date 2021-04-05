@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  StatusBar,
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -37,6 +38,7 @@ const LogIn = ({ navigation }) => {
     >
       {(props) => (
         <View style={styles.form}>
+          <StatusBar barStyle="light-content" />
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
