@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   TextInput,
   Text,
@@ -6,29 +6,29 @@ import {
   StyleSheet,
   View,
   StatusBar,
-} from "react-native";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { setUserData } from "./redux/actions";
+} from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/actions';
 
 const CreateSchema = Yup.object().shape({
   userName: Yup.string()
-    .min(2, "To short!")
-    .max(50, "To long!")
-    .required("Required"),
+    .min(2, 'To short!')
+    .max(50, 'To long!')
+    .required('Required'),
   password: Yup.string()
-    .min(2, "To short!")
-    .max(50, "To long!")
-    .required("Required"),
+    .min(2, 'To short!')
+    .max(50, 'To long!')
+    .required('Required'),
 });
 
-const LogIn = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   return (
     <Formik
-      initialValues={{ userName: "", password: "" }}
+      initialValues={{ userName: '', password: '' }}
       validationSchema={CreateSchema}
       onSubmit={(values) =>
         dispatch(
@@ -38,14 +38,14 @@ const LogIn = ({ navigation }) => {
     >
       {(props) => (
         <View style={styles.form}>
-          <StatusBar barStyle="light-content" />
+          <StatusBar barStyle='light-content' />
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
               value={props.values.userName}
-              onChangeText={props.handleChange("userName")}
-              placeholder="Username"
-              placeholderTextColor="#ccc"
+              onChangeText={props.handleChange('userName')}
+              placeholder='Username'
+              placeholderTextColor='#ccc'
             />
             {props.errors.userName && props.touched.userName && (
               <Text style={styles.errorText}>{props.errors.userName}</Text>
@@ -56,9 +56,9 @@ const LogIn = ({ navigation }) => {
           <TextInput
             style={styles.input}
             value={props.values.password}
-            onChangeText={props.handleChange("password")}
-            placeholder="Password"
-            placeholderTextColor="#ccc"
+            onChangeText={props.handleChange('password')}
+            placeholder='Password'
+            placeholderTextColor='#ccc'
           />
           {props.errors.password && props.touched.password && (
             <Text style={styles.errorText}>{props.errors.password}</Text>
@@ -73,9 +73,9 @@ const LogIn = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.createButton}
-            onPress={() => navigation.navigate("CreacteAccaunt")}
+            onPress={() => navigation.navigate('CreateAccountScreen')}
           >
-            <Text style={styles.createButtonText}>Create New Accaunt</Text>
+            <Text style={styles.createButtonText}>Create New Account</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LogIn;
+export default LoginScreen;

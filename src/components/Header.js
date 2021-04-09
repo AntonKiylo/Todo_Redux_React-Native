@@ -1,10 +1,10 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import InputTodo from "./InputTodo";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import InputTodo from './InputTodo';
 
-const Header = ({ navigation }) => (
+const Header = () => (
   <View style={styles.header}>
-    <InputTodo navigation={navigation} />
+    <InputTodo />
   </View>
 );
 

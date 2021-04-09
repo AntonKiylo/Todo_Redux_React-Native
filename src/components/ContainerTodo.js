@@ -1,7 +1,7 @@
-import React from "react";
-import { StyleSheet, View, FlatList, Text } from "react-native";
-import { useSelector } from "react-redux";
-import Todo from "./Todo";
+import React from 'react';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { useSelector } from 'react-redux';
+import Todo from './Todo';
 
 const renderItem = ({ item }) => <Todo todo={item} />;
 const key = (item) => item.id;

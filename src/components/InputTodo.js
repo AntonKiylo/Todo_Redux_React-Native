@@ -1,11 +1,10 @@
-import React, { useState, useCallback } from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity, Image } from "react-native";
-import { useDispatch } from "react-redux";
-import { addTodo } from "./redux/actions";
-import AddButtonImage from "../assets/add-button.png";
-import BurgerImage from "../assets/burger.png";
+import React, { useState, useCallback } from 'react';
+import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../redux/actions';
+import { AntDesign } from '@expo/vector-icons';
 
-const InputTodo = ({ navigation }) => {
+const InputTodo = () => {
   const [inputText, setInputText] = useState('');
   const dispatch = useDispatch();
 
@@ -16,21 +15,15 @@ const InputTodo = ({ navigation }) => {
 
   return (
     <View style={styles.inputBlock}>
-      <TouchableOpacity
-        style={styles.drawerButton}
-        onPress={() => navigation.openDrawer()}
-      >
-        <Image source={BurgerImage} />
-      </TouchableOpacity>
       <TextInput
         value={inputText}
         onChangeText={(text) => setInputText(text)}
         style={styles.input}
-        placeholder="Add Item"
-        placeholderTextColor="#ccc"
+        placeholder='Add Item'
+        placeholderTextColor='#ccc'
       />
       <TouchableOpacity onPress={onHandleAddTodo} disabled={!inputText.trim()}>
-        <Image source={AddButtonImage} />
+        <AntDesign name='pluscircle' size={29} color='#3d79b1' />
       </TouchableOpacity>
     </View>
   );
@@ -50,9 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
   },
-  drawerButton: {
-    marginRight: 10,
-  }
 });
 
 export default InputTodo;

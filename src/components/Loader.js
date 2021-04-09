@@ -1,10 +1,10 @@
-import React from "react";
-import { View, StyleSheet, ActivityIndicator } from "react-native";
+import React from 'react';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 
 const Loader = () => {
   return (
     <View style={styles.loader}>
-      <ActivityIndicator size="large" color="#ccc" />
+      <ActivityIndicator size='large' color='#ccc' />
     </View>
   );
 };

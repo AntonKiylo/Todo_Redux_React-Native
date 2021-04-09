@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
-import { useDispatch } from "react-redux";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { removeTodo, toggleTodoStatus } from "./redux/actions";
-import RemoveButtonImage from "../assets/remove-button.png";
+import React, { useCallback } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { useDispatch } from 'react-redux';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { removeTodo, toggleTodoStatus } from '../redux/actions';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ const Todo = ({ todo }) => {
       <View style={styles.textWrapper}>
         <BouncyCheckbox
           size={23}
-          iconStyle={{ borderColor: "#ccc" }}
-          fillColor="#3d79b1"
+          iconStyle={{ borderColor: '#ccc' }}
+          fillColor='#3d79b1'
           onPress={onHandleToggleTodoState}
         />
         <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
@@ -30,7 +30,7 @@ const Todo = ({ todo }) => {
         </Text>
       </View>
       <TouchableOpacity onPress={onHandleRemoveTodo}>
-        <Image source={RemoveButtonImage} />
+        <MaterialIcons name='delete' size={32} color='#ccc' />
       </TouchableOpacity>
     </View>
   );

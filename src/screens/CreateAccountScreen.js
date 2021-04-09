@@ -1,27 +1,34 @@
-import React from "react";
-import { TextInput, Text, TouchableOpacity, StyleSheet, View, StatusBar } from "react-native";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { setUserData } from "./redux/actions";
+import React from 'react';
+import {
+  TextInput,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  StatusBar
+} from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/actions';
 
 const LoginSchema = Yup.object().shape({
   userName: Yup.string()
-    .min(2, "To short!")
-    .max(50, "To long!")
-    .required("Required"),
+    .min(2, 'To short!')
+    .max(50, 'To long!')
+    .required('Required'),
   password: Yup.string()
-    .min(2, "To short!")
-    .max(50, "To long!")
-    .required("Required"),
+    .min(2, 'To short!')
+    .max(50, 'To long!')
+    .required('Required'),
 });
 
-const CreacteAccaunt = ({ navigation }) => {
+const CreateAccountScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   return (
     <Formik
-      initialValues={{ userName: "", password: "" }}
+      initialValues={{ userName: '', password: '' }}
       validationSchema={LoginSchema}
       onSubmit={(values) =>
         dispatch(
@@ -31,14 +38,14 @@ const CreacteAccaunt = ({ navigation }) => {
     >
       {(props) => (
         <View style={styles.form}>
-          <StatusBar barStyle="light-content" />
+          <StatusBar barStyle='light-content' />
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
               value={props.values.userName}
-              onChangeText={props.handleChange("userName")}
-              placeholder="Username"
-              placeholderTextColor="#ccc"
+              onChangeText={props.handleChange('userName')}
+              placeholder='Username'
+              placeholderTextColor='#ccc'
             />
             {props.errors.userName && props.touched.userName && (
               <Text style={styles.errorText}>{props.errors.userName}</Text>
@@ -49,9 +56,9 @@ const CreacteAccaunt = ({ navigation }) => {
             <TextInput
               style={styles.input}
               value={props.values.password}
-              onChangeText={props.handleChange("password")}
-              placeholder="Password"
-              placeholderTextColor="#ccc"
+              onChangeText={props.handleChange('password')}
+              placeholder='Password'
+              placeholderTextColor='#ccc'
             />
             {props.errors.password && props.touched.password && (
               <Text style={styles.errorText}>{props.errors.password}</Text>
@@ -62,12 +69,12 @@ const CreacteAccaunt = ({ navigation }) => {
             style={styles.createButton}
             onPress={props.handleSubmit}
           >
-            <Text style={styles.createButtonText}>Create New Accaunt</Text>
+            <Text style={styles.createButtonText}>Create New Account</Text>
           </TouchableOpacity>
 
           <View>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Text style={styles.footerText}>Already have accaunt?</Text>
+              <Text style={styles.footerText}>Already have account?</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -121,4 +128,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CreacteAccaunt;
+export default CreateAccountScreen;
