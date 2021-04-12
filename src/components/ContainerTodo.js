@@ -3,8 +3,8 @@ import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import Todo from './Todo';
 
-const renderItem = ({ item }) => <Todo todo={item} />;
 const key = (item) => item.id;
+const renderItem = ({ item }) => <Todo todo={item} />;
 
 const TodoContainer = () => {
   const todos = useSelector(state => state.todoReducer);

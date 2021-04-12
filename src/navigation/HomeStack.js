@@ -18,8 +18,9 @@ const HomeStack = () => {
         activeTintColor: '#3d79b1',
         inactiveTintColor: '#ccc',
         showLabel: false,
-        activeBackgroundColor: '#31315b',
-        inactiveBackgroundColor: '#31315b',
+        style: {
+          backgroundColor: '#31315b'
+        }
       }}
     >
       <TabNavigator.Screen

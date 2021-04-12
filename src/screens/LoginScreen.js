@@ -2,7 +2,6 @@ import React from 'react';
 import {
   TextInput,
   Text,
-  TouchableOpacity,
   StyleSheet,
   View,
   StatusBar,
