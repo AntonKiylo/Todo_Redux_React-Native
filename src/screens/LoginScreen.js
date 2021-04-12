@@ -11,6 +11,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../redux/actions';
+import LogButton from '../components/LogButton';
+import CreateAccountButton from '../components/CreateAccountButton';
 
 const CreateSchema = Yup.object().shape({
   userName: Yup.string()
@@ -65,18 +67,17 @@ const LoginScreen = ({ navigation }) => {
           )}
           </View>
 
-          <TouchableOpacity style={styles.button} onPress={props.handleSubmit}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
+          <LogButton
+            title='Log In'
+            handleSubmit={props.handleSubmit}
+          />
 
           <View style={styles.horizontalLine} />
 
-          <TouchableOpacity
-            style={styles.createButton}
-            onPress={() => navigation.navigate('CreateAccountScreen')}
-          >
-            <Text style={styles.createButtonText}>Create New Account</Text>
-          </TouchableOpacity>
+          <CreateAccountButton
+            title='Create New Account'
+            handleSubmit={() => navigation.navigate('CreateAccountScreen')}
+          />
         </View>
       )}
     </Formik>
@@ -102,32 +103,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#282851",
     color: "#fff",
   },
-  button: {
-    borderRadius: 12,
-    backgroundColor: "#3d79b1",
-    padding: 8,
-    width: 100,
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    color: "#ccc",
-  },
   horizontalLine: {
     alignSelf: "stretch",
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
     marginBottom: 20,
-  },
-  createButton: {
-    padding: 8,
-    borderRadius: 12,
-    backgroundColor: "#8ac926",
-  },
-  createButtonText: {
-    color: "#fff",
-    fontSize: 18,
   },
   errorText: {
     color: "red",

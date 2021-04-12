@@ -11,6 +11,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../redux/actions';
+import CreateAccountButton from '../components/CreateAccountButton';
 
 const LoginSchema = Yup.object().shape({
   userName: Yup.string()
@@ -65,18 +66,17 @@ const CreateAccountScreen = ({ navigation }) => {
             )}
           </View>
 
-          <TouchableOpacity
-            style={styles.createButton}
-            onPress={props.handleSubmit}
-          >
-            <Text style={styles.createButtonText}>Create New Account</Text>
-          </TouchableOpacity>
+          <CreateAccountButton
+            title='Create New Account'
+            handleSubmit={props.handleSubmit}
+          />
 
-          <View>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Text style={styles.footerText}>Already have account?</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.footer}
+            onPress={() => navigation.goBack()}
+          >
+            <Text style={styles.footerText}>Already have account?</Text>
+          </TouchableOpacity>
         </View>
       )}
     </Formik>
@@ -102,21 +102,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#282851',
     color: '#fff',
   },
-  horizontalLine: {
-    alignSelf: "stretch",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    marginBottom: 20,
-  },
-  createButton: {
-    padding: 8,
-    borderRadius: 12,
-    backgroundColor: "#8ac926",
-    marginBottom: 20
-  },
-  createButtonText: {
-    color: "#fff",
-    fontSize: 18,
+  footer: {
+    marginTop: 20,
   },
   footerText: {
     color: "#fff",
