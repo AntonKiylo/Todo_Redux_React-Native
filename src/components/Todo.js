@@ -27,7 +27,12 @@ const Todo = ({ todo }) => {
           fillColor='#3d79b1'
           onPress={onHandleToggleTodoState}
         />
-        <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
+        <Text
+          style={[
+            styles.notComplitedTodo,
+            todo.isComplited && styles.complitedTodo,
+          ]}
+        >
           {todo.content}
         </Text>
       </View>
@@ -36,10 +41,11 @@ const Todo = ({ todo }) => {
         onPress={() => {
           navigation.navigate('EditTodoScreen', {
             todo: todo.content,
+            id: todo.id,
           });
         }}
       >
-        <MaterialIcons name="edit" size={30} color='#ccc' />
+        <MaterialIcons name='edit' size={30} color='#ccc' />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={onHandleRemoveTodo}>
@@ -47,7 +53,7 @@ const Todo = ({ todo }) => {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   todo: {

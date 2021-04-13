@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TextInput,
-  Text,
-  StyleSheet,
-  View,
-  StatusBar,
-} from 'react-native';
+import { TextInput, Text, StyleSheet, View, StatusBar } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -33,7 +27,7 @@ const LoginScreen = ({ navigation }) => {
       validationSchema={CreateSchema}
       onSubmit={(values) =>
         dispatch(
-          setUserData({ userName: values.userName, password: values.password })
+          setUserData({ userName: values.userName, password: values.password }),
         )
       }
     >
@@ -54,22 +48,19 @@ const LoginScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.inputWrapper}>
-          <TextInput
-            style={styles.input}
-            value={props.values.password}
-            onChangeText={props.handleChange('password')}
-            placeholder='Password'
-            placeholderTextColor='#ccc'
-          />
-          {props.errors.password && props.touched.password && (
-            <Text style={styles.errorText}>{props.errors.password}</Text>
-          )}
+            <TextInput
+              style={styles.input}
+              value={props.values.password}
+              onChangeText={props.handleChange('password')}
+              placeholder='Password'
+              placeholderTextColor='#ccc'
+            />
+            {props.errors.password && props.touched.password && (
+              <Text style={styles.errorText}>{props.errors.password}</Text>
+            )}
           </View>
 
-          <LogButton
-            title='Log In'
-            handleSubmit={props.handleSubmit}
-          />
+          <LogButton title='Log In' handleSubmit={props.handleSubmit} />
 
           <View style={styles.horizontalLine} />
 
@@ -86,32 +77,32 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   form: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
-    backgroundColor: "#31315b",
+    backgroundColor: '#31315b',
   },
   inputWrapper: {
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     marginBottom: 20,
   },
   input: {
     fontSize: 18,
     borderRadius: 12,
     padding: 8,
-    backgroundColor: "#282851",
-    color: "#fff",
+    backgroundColor: '#282851',
+    color: '#fff',
   },
   horizontalLine: {
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    borderBottomColor: '#ccc',
     marginBottom: 20,
   },
   errorText: {
-    color: "red",
-    textAlign: "center"
-  }
+    color: 'red',
+    textAlign: 'center',
+  },
 });
 
 export default LoginScreen;

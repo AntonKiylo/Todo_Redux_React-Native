@@ -3,10 +3,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const LogButton = ({ title, handleSubmit }) => {
   return (
-    <TouchableOpacity
-      style={styles.button}
-      onPress={handleSubmit}
-    >
+    <TouchableOpacity style={styles.button} onPress={handleSubmit}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
@@ -15,15 +12,15 @@ const LogButton = ({ title, handleSubmit }) => {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 12,
-    backgroundColor: "#3d79b1",
+    backgroundColor: '#3d79b1',
     padding: 8,
     width: 100,
-    alignItems: "center",
+    alignItems: 'center',
     marginBottom: 20,
   },
   buttonText: {
     fontSize: 18,
-    color: "#ccc",
+    color: '#ccc',
   },
 });
 

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
-  StatusBar
+  StatusBar,
 } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -33,7 +33,7 @@ const CreateAccountScreen = ({ navigation }) => {
       validationSchema={LoginSchema}
       onSubmit={(values) =>
         dispatch(
-          setUserData({ userName: values.userName, password: values.password })
+          setUserData({ userName: values.userName, password: values.password }),
         )
       }
     >
@@ -106,13 +106,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   footerText: {
-    color: "#fff",
-    textDecorationLine: "underline"
+    color: '#fff',
+    textDecorationLine: 'underline',
   },
   errorText: {
-    color: "red",
-    textAlign: "center"
-  }
+    color: 'red',
+    textAlign: 'center',
+  },
 });
 
 export default CreateAccountScreen;

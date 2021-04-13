@@ -6,13 +6,10 @@ import LogButton from '../components/LogButton';
 
 const SettingScreen = () => {
   const dispatch = useDispatch();
-  
+
   return (
     <View style={styles.container}>
-      <LogButton
-        title='Log Out'
-        handleSubmit={() => dispatch(logOut())}
-      />
+      <LogButton title="Log Out" handleSubmit={() => dispatch(logOut())} />
     </View>
   );
 };

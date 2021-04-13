@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     color: '#ccc',
     fontSize: 18,
-  }
+  },
 });
 
 export default Header;

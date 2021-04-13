@@ -13,9 +13,9 @@ const AuthenticationStack = () => {
         component={LoginScreen}
         options={{
           title: 'Log into your account here',
-          headerStyle: {backgroundColor: '#31315b'},
+          headerStyle: { backgroundColor: '#31315b' },
           headerTintColor: '#ccc',
-          headerTitleAlign: 'center'
+          headerTitleAlign: 'center',
         }}
       />
       <StackNavigator.Screen
@@ -23,7 +23,7 @@ const AuthenticationStack = () => {
         component={CreateAccountScreen}
         options={{
           title: 'Log In',
-          headerStyle: {backgroundColor: '#31315b'},
+          headerStyle: { backgroundColor: '#31315b' },
           headerTintColor: '#ccc',
         }}
       />

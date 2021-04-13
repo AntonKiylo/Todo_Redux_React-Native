@@ -7,7 +7,7 @@ const key = (item) => item.id;
 const renderItem = ({ item }) => <Todo todo={item} />;
 
 const TodoContainer = () => {
-  const todos = useSelector(state => state.todoReducer);
+  const todos = useSelector((state) => state.todoReducer);
 
   if (!todos || !todos.length) {
     return (
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   emptyContainerText: {
     color: '#ccc',
     fontSize: 24,
-  }
+  },
 });
 
 export default TodoContainer;

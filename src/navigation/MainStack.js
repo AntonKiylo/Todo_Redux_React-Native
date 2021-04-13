@@ -8,13 +8,16 @@ import AuthenticationStack from './AuthenticationStack';
 import HomeStack from './HomeStack';
 import { fetchRestoreToken } from '../redux/actions';
 import EditTodoScreen from '../screens/EditTodoScreen';
-import { Button } from 'react-native';
 
 const StackNavigator = createStackNavigator();
 
 const MainStack = () => {
-  const isAuthenticationStateLoading = useSelector(state => state.authenticationReducer.isLoading);
-  const userToken = useSelector(state => state.authenticationReducer.userToken);
+  const isAuthenticationStateLoading = useSelector(
+    (state) => state.authenticationReducer.isLoading,
+  );
+  const userToken = useSelector(
+    (state) => state.authenticationReducer.userToken,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const MainStack = () => {
 
   return (
     <NavigationContainer>
-      <StackNavigator.Navigator screenOptions={{headerShown: false}} >
+      <StackNavigator.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticationStateLoading ? (
           <StackNavigator.Screen name='Loader' component={Loader} />
         ) : userToken === null ? (
@@ -33,14 +36,18 @@ const MainStack = () => {
           />
         ) : (
           <>
-            <StackNavigator.Screen name='HomeStack' component={HomeStack} options={{title: 'Back'}} />
+            <StackNavigator.Screen
+              name='HomeStack'
+              component={HomeStack}
+              options={{ title: 'Back' }}
+            />
             <StackNavigator.Screen
               name='EditTodoScreen'
               component={EditTodoScreen}
               options={{
                 headerShown: true,
                 title: '',
-                headerStyle: {backgroundColor: '#31315b'},
+                headerStyle: { backgroundColor: '#31315b' },
                 headerTintColor: '#ccc',
               }}
             />
