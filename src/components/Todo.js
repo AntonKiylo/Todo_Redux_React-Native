@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { removeTodo, toggleTodoStatus } from '../redux/actions';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const onHandleRemoveTodo = useCallback(() => {
     dispatch(removeTodo(todo.id));
@@ -25,7 +27,14 @@ const Todo = ({ todo }) => {
           fillColor='#3d79b1'
           onPress={onHandleToggleTodoState}
         />
-        <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
+        <Text
+          style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}
+          onLongPress={() => {
+            navigation.navigate('EditTodoScreen', {
+              todo: todo.content,
+            });
+          }}
+        >
           {todo.content}
         </Text>
       </View>
