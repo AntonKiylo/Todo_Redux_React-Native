@@ -27,17 +27,21 @@ const Todo = ({ todo }) => {
           fillColor='#3d79b1'
           onPress={onHandleToggleTodoState}
         />
-        <Text
-          style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}
-          onLongPress={() => {
-            navigation.navigate('EditTodoScreen', {
-              todo: todo.content,
-            });
-          }}
-        >
+        <Text style={[styles.notComplitedTodo, todo.isComplited && styles.complitedTodo]}>
           {todo.content}
         </Text>
       </View>
+
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('EditTodoScreen', {
+            todo: todo.content,
+          });
+        }}
+      >
+        <MaterialIcons name="edit" size={30} color='#ccc' />
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={onHandleRemoveTodo}>
         <MaterialIcons name='delete' size={32} color='#ccc' />
       </TouchableOpacity>
