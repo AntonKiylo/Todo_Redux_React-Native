@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/actions';
+import { addTodo } from '../../redux/actions';
 import { AntDesign } from '@expo/vector-icons';
 
 const InputTodo = () => {
