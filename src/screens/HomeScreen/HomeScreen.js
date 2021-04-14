@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
-import Header from '../components/Header';
-import ContainerTodo from '../components/ContainerTodo';
+import Header from './Header';
+import ContainerTodo from './ContainerTodo';
 
 const HomeScreen = () => (
   <View style={styles.home}>

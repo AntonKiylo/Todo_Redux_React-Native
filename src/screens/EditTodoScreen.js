@@ -9,10 +9,13 @@ import {
 import { useDispatch } from 'react-redux';
 import { editTodo, removeTodo } from '../redux/actions';
 import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
-const EditTodoScreen = ({ route, navigation }) => {
-  const { id, todo } = route.params;
-  const [inputText, setInputText] = useState(todo);
+const EditTodoScreen = ({ route }) => {
+  navigation = useNavigation();
+  const { id } = route.params;
+  const todo = useSelector(state => state.todoReducer.find(item => item.id === id));
+  const [inputText, setInputText] = useState(todo.content);
   const dispatch = useDispatch();
 
   const handleEditTodo = useCallback(() => {
