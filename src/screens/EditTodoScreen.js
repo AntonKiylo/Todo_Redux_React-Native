@@ -49,6 +49,7 @@ const EditTodoScreen = ({ route, navigation }) => {
         onChangeText={(text) => setInputText(text)}
         autoFocus={true}
         multiline={true}
+        textAlignVertical='top'
       />
 
       <TouchableOpacity style={styles.button} onPress={handleRemoveTodo}>
