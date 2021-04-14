@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { removeTodo, toggleTodoStatus } from '../redux/actions';
+import { removeTodo, toggleTodoStatus } from '../../redux/actions';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 

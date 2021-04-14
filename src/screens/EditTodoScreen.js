@@ -6,16 +6,16 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
+import { useDispatch, useSelector } from 'react-redux';
 import { editTodo, removeTodo } from '../redux/actions';
 import { Entypo } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/core';
 
 const EditTodoScreen = ({ route }) => {
   navigation = useNavigation();
   const { id } = route.params;
   const todo = useSelector(state => state.todoReducer.find(item => item.id === id));
-  const [inputText, setInputText] = useState(todo.content);
+  const [inputText, setInputText] = useState(todo?.content ?? '');
   const dispatch = useDispatch();
 
   const handleEditTodo = useCallback(() => {
@@ -49,7 +49,7 @@ const EditTodoScreen = ({ route }) => {
       <TextInput
         style={styles.input}
         value={inputText}
-        onChangeText={(text) => setInputText(text)}
+        onChangeText={text => setInputText(text)}
         autoFocus={true}
         multiline={true}
         textAlignVertical='top'

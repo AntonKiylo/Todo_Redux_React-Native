@@ -7,6 +7,7 @@ import {
   View,
   StatusBar,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -24,7 +25,8 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const CreateAccountScreen = ({ navigation }) => {
+const CreateAccountScreen = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   return (

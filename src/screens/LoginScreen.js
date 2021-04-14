@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, Text, StyleSheet, View, StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -18,7 +19,8 @@ const CreateSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   return (
