@@ -1,16 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeStack from './HomeStack';
-import SettingStack from './SettingStack';
-import MapStack from './MapStack';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import SettingScreen from '../screens/SettingScreen';
 import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
 
 const TabNavigator = createBottomTabNavigator();
 
-const MainStack = () => {
+const HomeStack = () => {
   const todosAmount = useSelector((state) => state.todoReducer.length);
 
   return (
@@ -25,8 +23,8 @@ const MainStack = () => {
       }}
     >
       <TabNavigator.Screen
-        name='HomeStack'
-        component={HomeStack}
+        name='HomeScreen'
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name='home' size={30} color={color} />
@@ -35,20 +33,11 @@ const MainStack = () => {
         }}
       />
       <TabNavigator.Screen
-        name='SettingStack'
-        component={SettingStack}
+        name='SettingScreen'
+        component={SettingScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name='settings-sharp' size={30} color={color} />
-          ),
-        }}
-      />
-      <TabNavigator.Screen
-        name='MapStack'
-        component={MapStack}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="map" size={28} color={color} />
           ),
         }}
       />
@@ -56,4 +45,4 @@ const MainStack = () => {
   );
 };
 
-export default MainStack;
+export default HomeStack;

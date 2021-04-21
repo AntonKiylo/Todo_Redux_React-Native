@@ -5,7 +5,7 @@ import CreateAccountScreen from '../screens/CreateAccountScreen';
 
 const StackNavigator = createStackNavigator();
 
-const AuthenticationStack = () => {
+const AuthStack = () => {
   return (
     <StackNavigator.Navigator>
       <StackNavigator.Screen
@@ -31,4 +31,4 @@ const AuthenticationStack = () => {
   );
 };
 
-export default AuthenticationStack;
+export default AuthStack;

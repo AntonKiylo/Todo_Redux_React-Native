@@ -3,14 +3,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './src/redux/reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import MainStack from './src/navigation/MainStack';
+import AppStack from './src/navigation/AppStack';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => {
   return (
     <Provider store={store}>
-      <MainStack />
+      <AppStack />
     </Provider>
   );
 };
