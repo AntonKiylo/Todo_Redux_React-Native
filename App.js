@@ -1,7 +1,11 @@
 import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { rootReducer } from './src/redux/reducers/rootReducer';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import store from './src/redux/store';
 import MainStack from './src/navigation/MainStack';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => {
   return (

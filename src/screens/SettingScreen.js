@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { logOut } from '../redux/actions';
+import { logOut } from '../redux/actions/authentication';
 import { useDispatch } from 'react-redux';
 import LogButton from '../components/LogButton';
 

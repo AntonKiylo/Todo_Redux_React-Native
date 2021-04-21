@@ -8,14 +8,18 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { editTodo, removeTodo } from '../redux/actions';
+import { editTodo, removeTodo } from '../redux/actions/todo';
 import { Entypo } from '@expo/vector-icons';
 
 const EditTodoScreen = ({ route }) => {
-  navigation = useNavigation();
+  const navigation = useNavigation();
   const { id } = route.params;
-  const todo = useSelector(state => state.todoReducer.find(item => item.id === id));
-  const [inputText, setInputText] = useState(todo?.content ?? '');
+  
+  const todoContent = useSelector(state => (
+    state.todoReducer.find(item => item.id === id)?.content
+  ));
+  
+  const [inputText, setInputText] = useState(todoContent);
   const dispatch = useDispatch();
 
   const handleEditTodo = useCallback(() => {

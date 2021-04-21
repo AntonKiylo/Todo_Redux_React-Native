@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Loader from '../components/Loader';
 import AuthenticationStack from './AuthenticationStack';
 import HomeStack from './HomeStack';
-import { fetchRestoreToken } from '../redux/actions';
+import { fetchRestoreToken } from '../redux/actions/authentication';
 import EditTodoScreen from '../screens/EditTodoScreen';
 
 const StackNavigator = createStackNavigator();

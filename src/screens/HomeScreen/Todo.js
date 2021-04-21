@@ -1,23 +1,30 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { removeTodo, toggleTodoStatus } from '../../redux/actions';
+import { removeTodo, toggleTodoStatus } from '../../redux/actions/todo';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const Todo = ({ todo }) => {
+const Todo = ({ id }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const onHandleRemoveTodo = useCallback(() => {
-    dispatch(removeTodo(todo.id));
-  }, [todo.id]);
+    dispatch(removeTodo(id));
+  }, [id]);
 
   const onHandleToggleTodoState = useCallback(() => {
-    dispatch(toggleTodoStatus(todo.id));
-  }, [todo.id]);
+    dispatch(toggleTodoStatus(id));
+  }, [id]);
 
+  const todoContent = useSelector(state => (
+    state.todoReducer.find(item => item.id === id).content
+  ));
+  const todoStatus = useSelector(state => (
+    state.todoReducer.find(item => item.id === id).isCompleted
+  ));
+  
   return (
     <View style={styles.todo}>
       <View style={styles.textWrapper}>
@@ -29,19 +36,18 @@ const Todo = ({ todo }) => {
         />
         <Text
           style={[
-            styles.notComplitedTodo,
-            todo.isComplited && styles.complitedTodo,
+            styles.notCompletedTodo,
+            todoStatus && styles.completedTodo,
           ]}
         >
-          {todo.content}
+          {todoContent}
         </Text>
       </View>
 
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('EditTodoScreen', {
-            todo: todo.content,
-            id: todo.id,
+            id: id,
           });
         }}
       >
@@ -73,13 +79,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingRight: 10,
   },
-  notComplitedTodo: {
+  notCompletedTodo: {
     color: '#fff',
     fontSize: 18,
     flexWrap: 'wrap',
     flex: 1,
   },
-  complitedTodo: {
+  completedTodo: {
     color: '#ccc',
     textDecorationLine: 'line-through',
   },

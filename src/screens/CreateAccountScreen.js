@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/core';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { setUserData } from '../redux/actions';
+import { setUserData } from '../redux/actions/authentication';
 import CreateAccountButton from '../components/CreateAccountButton';
 
 const LoginSchema = Yup.object().shape({
