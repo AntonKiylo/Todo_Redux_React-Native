@@ -25,30 +25,30 @@ const MainStack = () => {
       }}
     >
       <TabNavigator.Screen
-        name='HomeStack'
+        name="HomeStack"
         component={HomeStack}
         options={{
           tabBarIcon: ({ color }) => (
-            <Entypo name='home' size={30} color={color} />
+            <Entypo name="home" size={30} color={color} />
           ),
           tabBarBadge: todosAmount,
         }}
       />
       <TabNavigator.Screen
-        name='SettingStack'
-        component={SettingStack}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name='settings-sharp' size={30} color={color} />
-          ),
-        }}
-      />
-      <TabNavigator.Screen
-        name='MapStack'
+        name="MapStack"
         component={MapStack}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="map" size={28} color={color} />
+          ),
+        }}
+      />
+      <TabNavigator.Screen
+        name="SettingStack"
+        component={SettingStack}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="settings-sharp" size={30} color={color} />
           ),
         }}
       />

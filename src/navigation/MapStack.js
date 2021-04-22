@@ -6,10 +6,16 @@ const StackNavigator = createStackNavigator();
 
 const MapStack = () => {
   return (
-    <StackNavigator.Navigator screenOptions={{ headerShown: false }}>
+    <StackNavigator.Navigator>
       <StackNavigator.Screen
         name='MapScreen'
         component={MapScreen}
+        options={{
+          title: 'Map',
+          headerStyle: { backgroundColor: '#31315b' },
+          headerTintColor: '#ccc',
+          headerTitleAlign: 'center',
+        }}
       />
     </StackNavigator.Navigator>
   );

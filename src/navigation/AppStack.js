@@ -45,21 +45,3 @@ const AppStack = () => {
 };
 
 export default AppStack;
-
-
-{/* <StackNavigator.Screen
-  name='EditTodoScreen'
-  component={EditTodoScreen}
-  options={{
-    headerShown: true,
-    title: '',
-    headerStyle: { backgroundColor: '#31315b' },
-    headerTintColor: '#ccc',
-  }}
-/> */}
-
-{/* <StackNavigator.Screen
-  name='HomeStack'
-  component={HomeStack}
-  options={{ title: 'Back' }}
-/> */}

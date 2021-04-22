@@ -25,6 +25,7 @@ const AuthStack = () => {
           title: 'Log In',
           headerStyle: { backgroundColor: '#31315b' },
           headerTintColor: '#ccc',
+          headerTitleAlign: 'center',
         }}
       />
     </StackNavigator.Navigator>

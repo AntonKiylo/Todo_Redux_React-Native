@@ -24,12 +24,12 @@ const EditTodoScreen = ({ route }) => {
 
   const handleEditTodo = useCallback(() => {
     dispatch(editTodo(id, inputText));
-    navigation.goBack();
+    navigation.navigate('HomeScreen');
   });
 
   const handleRemoveTodo = useCallback(() => {
     dispatch(removeTodo(id));
-    navigation.goBack();
+    navigation.navigate('HomeScreen');
   });
 
   useEffect(() => {

@@ -11,21 +11,13 @@ const HomeStack = () => {
       <StackNavigator.Screen
         name='HomeScreen'
         component={HomeScreen}
-        // options={{
-        //   title: 'Log into your account here',
-        //   headerStyle: { backgroundColor: '#31315b' },
-        //   headerTintColor: '#ccc',
-        //   headerTitleAlign: 'center',
-        // }}
+        options={{
+          title: 'Back',
+        }}
       />
       <StackNavigator.Screen
         name='EditTodoScreen'
         component={EditTodoScreen}
-        // options={{
-        //   title: 'Log In',
-        //   headerStyle: { backgroundColor: '#31315b' },
-        //   headerTintColor: '#ccc',
-        // }}
         options={{
           headerShown: true,
           title: '',
