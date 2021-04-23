@@ -6,7 +6,7 @@ const PrivacyPolicyScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
           et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
           felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
@@ -24,9 +24,7 @@ const PrivacyPolicyScreen = () => {
           blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio
           et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
           faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus
-          tincidunt.
-        </Text>
-        <Text style={styles.text}>
+          tincidunt.{'\n\n'}
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
           et magnis dis parturient montes, nascetur ridiculus mus. Donec quam

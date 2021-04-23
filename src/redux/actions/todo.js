@@ -1,9 +1,9 @@
-import { ACTIONS } from './actionTypes';
+import { ADD_TODO, REMOVE_TODO, EDIT_TODO, TOGGLE_TODO_STATUS } from './actionTypes';
 
 let todoId = 0;
 
 export const addTodo = (inputText) => ({
-  type: ACTIONS.ADD_TODO,
+  type: ADD_TODO,
   payload: {
     content: inputText,
     id: (++todoId).toString(),
@@ -12,16 +12,16 @@ export const addTodo = (inputText) => ({
 });
 
 export const removeTodo = (id) => ({
-  type: ACTIONS.REMOVE_TODO,
+  type: REMOVE_TODO,
   payload: id,
 });
 
 export const editTodo = (id, text) => ({
-  type: ACTIONS.EDIT_TODO,
+  type: EDIT_TODO,
   payload: { id, text },
 });
 
 export const toggleTodoStatus = (id) => ({
-  type: ACTIONS.TOGGLE_TODO_STATUS,
+  type: TOGGLE_TODO_STATUS,
   payload: id,
 });

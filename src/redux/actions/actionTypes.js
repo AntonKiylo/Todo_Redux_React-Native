@@ -1,10 +1,8 @@
-export const ACTIONS = {
-  ADD_TODO: 'ADD_TODO',
-  REMOVE_TODO: 'REMOVE_TODO',
-  TOGGLE_TODO_STATUS: 'TOGGLE_TODO_STATUS',
-  EDIT_TODO: 'EDIT_TODO',
+export const ADD_TODO = 'ADD_TODO';
+export const REMOVE_TODO = 'REMOVE_TODO';
+export const TOGGLE_TODO_STATUS = 'TOGGLE_TODO_STATUS';
+export const EDIT_TODO = 'EDIT_TODO';
 
-  RESTORE_TOKEN: 'RESTORE_TOKEN',
-  SIGN_IN: 'SIGN_IN',
-  SIGN_OUT: 'SIGN_OUT',
-};
+export const RESTORE_TOKEN = 'RESTORE_TOKEN';
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';

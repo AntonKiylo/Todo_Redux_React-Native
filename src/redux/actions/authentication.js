@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ACTIONS } from './actionTypes';
+import { RESTORE_TOKEN, SIGN_OUT, SIGN_IN } from './actionTypes';
 
 export const fetchRestoreToken = () => (dispatch) => {
   const getData = async () => {
@@ -8,7 +8,7 @@ export const fetchRestoreToken = () => (dispatch) => {
       const output = jsonValue != null ? JSON.parse(jsonValue) : null;
 
       dispatch({
-        type: ACTIONS.RESTORE_TOKEN,
+        type: RESTORE_TOKEN,
         payload: output,
       });
     } catch (error) {
@@ -25,7 +25,7 @@ export const setUserData = (value) => (dispatch) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('@storage_Key', jsonValue);
       dispatch({
-        type: ACTIONS.SIGN_IN,
+        type: SIGN_IN,
         payload: value,
       });
     } catch (error) {
@@ -40,7 +40,7 @@ export const logOut = () => (dispatch) => {
   const clearAll = async () => {
     try {
       await AsyncStorage.clear();
-      dispatch({ type: ACTIONS.SIGN_OUT });
+      dispatch({ type: SIGN_OUT });
     } catch (error) {
       console.log(error);
     }

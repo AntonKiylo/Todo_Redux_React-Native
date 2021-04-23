@@ -19,10 +19,10 @@ const Todo = ({ id }) => {
   }, [id]);
 
   const todoContent = useSelector(state => (
-    state.todoReducer.find(item => item.id === id).content
+    state.todoReducer.find(item => item.id === id)?.content
   ));
   const todoStatus = useSelector(state => (
-    state.todoReducer.find(item => item.id === id).isCompleted
+    state.todoReducer.find(item => item.id === id)?.isCompleted
   ));
   
   return (
