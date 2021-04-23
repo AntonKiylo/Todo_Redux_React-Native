@@ -1,14 +1,14 @@
 import React from 'react';
 import { TextInput, Text, StyleSheet, View, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { Formik } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../redux/actions/authentication';
 import LogButton from '../components/LogButton';
 import CreateAccountButton from '../components/CreateAccountButton';
 
-const CreateSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   userName: Yup.string()
     .min(2, 'To short!')
     .max(50, 'To long!')
@@ -22,57 +22,53 @@ const CreateSchema = Yup.object().shape({
 const LoginScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      userName: '',
+      password: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      dispatch(
+        setUserData({ userName: values.userName, password: values.password }),
+      );
+    },
+  });
 
   return (
-    <Formik
-      initialValues={{ userName: '', password: '' }}
-      validationSchema={CreateSchema}
-      onSubmit={(values) =>
-        dispatch(
-          setUserData({ userName: values.userName, password: values.password }),
-        )
-      }
-    >
-      {(props) => (
-        <View style={styles.form}>
-          <StatusBar barStyle='light-content' />
-          <View style={styles.inputWrapper}>
-            <TextInput
-              style={styles.input}
-              value={props.values.userName}
-              onChangeText={props.handleChange('userName')}
-              placeholder='Username'
-              placeholderTextColor='#ccc'
-            />
-            {props.errors.userName && props.touched.userName && (
-              <Text style={styles.errorText}>{props.errors.userName}</Text>
-            )}
-          </View>
-
-          <View style={styles.inputWrapper}>
-            <TextInput
-              style={styles.input}
-              value={props.values.password}
-              onChangeText={props.handleChange('password')}
-              placeholder='Password'
-              placeholderTextColor='#ccc'
-            />
-            {props.errors.password && props.touched.password && (
-              <Text style={styles.errorText}>{props.errors.password}</Text>
-            )}
-          </View>
-
-          <LogButton title='Log In' handleSubmit={props.handleSubmit} />
-
-          <View style={styles.horizontalLine} />
-
-          <CreateAccountButton
-            title='Create New Account'
-            handleSubmit={() => navigation.navigate('CreateAccountScreen')}
-          />
-        </View>
-      )}
-    </Formik>
+    <View style={styles.form}>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.inputWrapper}>
+        <TextInput
+          style={styles.input}
+          value={formik.values.userName}
+          onChangeText={formik.handleChange('userName')}
+          placeholder="Username"
+          placeholderTextColor="#ccc"
+        />
+        {formik.errors.userName && formik.touched.userName && (
+          <Text style={styles.errorText}>{formik.errors.userName}</Text>
+        )}
+      </View>
+      <View style={styles.inputWrapper}>
+        <TextInput
+          style={styles.input}
+          value={formik.values.password}
+          onChangeText={formik.handleChange('password')}
+          placeholder="Password"
+          placeholderTextColor="#ccc"
+        />
+        {formik.errors.password && formik.touched.password && (
+          <Text style={styles.errorText}>{formik.errors.password}</Text>
+        )}
+      </View>
+      <LogButton title="Log In" handleSubmit={formik.handleSubmit} />
+      <View style={styles.horizontalLine} />
+      <CreateAccountButton
+        title="Create New Account"
+        handleSubmit={() => navigation.navigate('CreateAccountScreen')}
+      />
+    </View>
   );
 };
 
