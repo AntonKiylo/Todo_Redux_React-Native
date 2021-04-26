@@ -1,4 +1,5 @@
 import { createReducer } from 'typesafe-actions';
+import * as R from 'ramda';
 import {
   addTodo,
   toggleTodoStatus,
@@ -6,24 +7,22 @@ import {
   editTodo,
 } from '../actions/todo';
 
-const initialState = [];
+const initialState = {};
 
 export const todoReducer = createReducer(initialState)
-  .handleAction(addTodo, (state, action) => [...state, action.payload])
-  .handleAction(removeTodo, (state, action) =>
-    state.filter((item) => item.id !== action.payload)
-  )
+  .handleAction(addTodo, (state, action) => R.assoc(action.payload.id, action.payload, state))
+  .handleAction(removeTodo, (state, action) => R.dissoc(action.payload, state))
   .handleAction(toggleTodoStatus, (state, action) =>
-    state.map((item) =>
-      item.id === action.payload
-        ? { ...item, isCompleted: !item.isCompleted }
-        : item,
-    )
+    R.set(
+      R.lensPath([action.payload, 'isCompleted']),
+      !state[action.payload].isCompleted,
+      state,
+    ),
   )
-  .handleAction(editTodo, (state, action) =>
-    state.map((item) =>
-      item.id === action.payload.id
-        ? { ...item, content: action.payload.text }
-        : item,
-    )
+  .handleAction(editTodo, (state, action) => 
+      R.set(
+        R.lensPath([action.payload.id, 'content']),
+        action.payload.text,
+        state
+      )
   );

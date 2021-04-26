@@ -15,9 +15,7 @@ const EditTodoScreen = ({ route }) => {
   const navigation = useNavigation();
   const { id } = route.params;
   
-  const todoContent = useSelector(state => (
-    state.todoReducer.find(item => item.id === id)?.content
-  ));
+  const todoContent = useSelector(state => state.todoReducer[id]?.content);
   
   const [inputText, setInputText] = useState(todoContent);
   const dispatch = useDispatch();

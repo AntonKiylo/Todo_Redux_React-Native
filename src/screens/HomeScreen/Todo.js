@@ -18,13 +18,9 @@ const Todo = ({ id }) => {
     dispatch(toggleTodoStatus(id));
   }, [id]);
 
-  const todoContent = useSelector(state => (
-    state.todoReducer.find(item => item.id === id)?.content
-  ));
-  const todoStatus = useSelector(state => (
-    state.todoReducer.find(item => item.id === id)?.isCompleted
-  ));
-  
+  const todoContent = useSelector(state => state.todoReducer[id])?.content;
+  const todoStatus = useSelector(state => state.todoReducer[id])?.isCompleted;
+
   return (
     <View style={styles.todo}>
       <View style={styles.textWrapper}>
@@ -43,7 +39,6 @@ const Todo = ({ id }) => {
           {todoContent}
         </Text>
       </View>
-
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('EditTodoScreen', {
@@ -53,7 +48,6 @@ const Todo = ({ id }) => {
       >
         <MaterialIcons name='edit' size={30} color='#ccc' />
       </TouchableOpacity>
-
       <TouchableOpacity onPress={onHandleRemoveTodo}>
         <MaterialIcons name='delete' size={32} color='#ccc' />
       </TouchableOpacity>
