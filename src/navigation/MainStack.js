@@ -11,7 +11,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const TabNavigator = createBottomTabNavigator();
 
 const MainStack = () => {
-  const todosAmount = useSelector((state) => state.todoReducer.length);
+  const todosAmount = useSelector((state) => Object.keys(state.todoReducer).length);
 
   return (
     <TabNavigator.Navigator
@@ -32,6 +32,7 @@ const MainStack = () => {
             <Entypo name="home" size={30} color={color} />
           ),
           tabBarBadge: todosAmount,
+          tabBarBadgeStyle: {backgroundColor: '#fff'}
         }}
       />
       <TabNavigator.Screen
