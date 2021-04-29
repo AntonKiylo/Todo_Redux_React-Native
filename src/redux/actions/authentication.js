@@ -1,50 +1,55 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RESTORE_TOKEN, SIGN_OUT, SIGN_IN } from './actionTypes';
 
-export const fetchRestoreToken = () => (dispatch) => {
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('@storage_Key');
-      const output = jsonValue != null ? JSON.parse(jsonValue) : null;
+import { createAsyncAction } from 'typesafe-actions';
 
-      dispatch({
-        type: RESTORE_TOKEN,
-        payload: output,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const fetchRestoreTokenAction = createAsyncAction(
+  'RESTORE_TOKEN_REQUEST',
+  'RESTORE_TOKEN_SUCCESS',
+  'RESTORE_TOKEN_FAILURE',
+)();
 
-  getData();
+export const fetchRestoreToken = () => async (dispatch) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('@storage_Key');
+    const output = jsonValue != null ? JSON.parse(jsonValue) : null;
+
+    dispatch(fetchRestoreTokenAction.success(output))
+    // dispatch({
+    //   type: RESTORE_TOKEN,
+    //   payload: output,
+    // });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export const setUserData = (value) => (dispatch) => {
-  const storeData = async () => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('@storage_Key', jsonValue);
-      dispatch({
-        type: SIGN_IN,
-        payload: value,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+// export const setUserData = (value) => (dispatch) => {
+//   const storeData = async () => {
+//     try {
+//       const jsonValue = JSON.stringify(value);
+//       await AsyncStorage.setItem('@storage_Key', jsonValue);
+//       dispatch({
+//         type: SIGN_IN,
+//         payload: value,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
-  storeData();
-};
+//   storeData();
+// };
 
-export const logOut = () => (dispatch) => {
-  const clearAll = async () => {
-    try {
-      await AsyncStorage.clear();
-      dispatch({ type: SIGN_OUT });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+// export const logOut = () => (dispatch) => {
+//   const clearAll = async () => {
+//     try {
+//       await AsyncStorage.clear();
+//       dispatch({ type: SIGN_OUT });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
-  clearAll();
-};
+//   clearAll();
+// };
